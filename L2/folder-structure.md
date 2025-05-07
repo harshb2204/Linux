@@ -8,43 +8,43 @@
 ### **Symbolic Links (Less Significant)**
 | Directory | Description |
 |-----------|-------------|
-| `/sbin -> /usr/sbin` | System binaries for administrative commands (linked to `/usr/sbin`). |
-| `/bin -> /usr/bin` | Essential user binaries (linked to `/usr/bin`). |
-| `/lib -> /usr/lib` | Shared libraries and kernel modules (linked to `/usr/lib`). |
+| `/sbin -> /usr/sbin` | System administration binaries, typically for root user; symlinked to `/usr/sbin` for unified management. |
+| `/bin -> /usr/bin` | Essential command binaries for all users (e.g., `ls`, `cp`); now symlinked to `/usr/bin` for consistency. |
+| `/lib -> /usr/lib` | Core shared libraries needed by binaries in `/bin` and `/sbin`; symlinked to `/usr/lib`. |
 
 ![](/images/usr.png)
 
 ### **Important System Directories**
 | Directory | Description |
 |-----------|-------------|
-| `/boot` | Stores files needed for booting the system (not relevant in containers). |
-| `/usr` | Contains most user-installed applications and libraries. |
-| `/var` | Stores logs, caches, and temporary files that change frequently. |
-| `/etc` | Stores system configuration files. |
+| `/boot` | Contains bootloader files (like GRUB) and Linux kernel; critical for system startup. |
+| `/usr` | Main directory for user programs, libraries, documentation, and system-wide resources. |
+| `/var` | Variable data: logs, mail, print spool, and files that grow over time. |
+| `/etc` | System-wide configuration files and scripts; most settings for installed software live here. |
 
 ### **User & Application-Specific Directories**
 | Directory | Description |
 |-----------|-------------|
-| `/home` | Default location for user home directories. |
-| `/opt` | Used for installing optional third-party software. |
-| `/srv` | Holds data for services like web servers (rarely used in containers). |
-| `/root` | Home directory for the root user. |
+| `/home` | Personal directories for each user; stores user files, settings, and data. |
+| `/opt` | Optional or third-party software packages; often used for large, self-contained apps. |
+| `/srv` | Data for services provided by the system (e.g., web, FTP); rarely used in containers. |
+| `/root` | Home directory for the root (admin) user; separate from regular user homes for security. |
 
 ### **Temporary & Volatile Directories**
 | Directory | Description |
 |-----------|-------------|
-| `/tmp` | Temporary files (cleared on reboot). |
-| `/run` | Holds runtime data for processes. |
-| `/proc` | Virtual filesystem for process and system information. |
-| `/sys` | Virtual filesystem for hardware and kernel information. |
-| `/dev` | Contains device files (e.g., `/dev/null`, `/dev/sda`). |
+| `/tmp` | Temporary files for all users and applications; cleared on reboot. |
+| `/run` | Volatile runtime data (e.g., process IDs, sockets); exists only while system is running. |
+| `/proc` | Virtual filesystem exposing kernel and process information as files; dynamic and read-only. |
+| `/sys` | Virtual filesystem for kernel, device, and hardware info; used for system tuning and monitoring. |
+| `/dev` | Device files representing hardware (disks, terminals, etc.) and virtual devices. |
 
 ### **Mount Points**
 | Directory | Description |
 |-----------|-------------|
-| `/mnt` | Temporary mount point for external filesystems. |
-| `/media` | Mount point for removable media (USB, CDs). |
-| `/data` | Likely your **mounted volume** from Windows (`C:/ubuntu-data`). |
+| `/mnt` | Standard location for temporarily mounting filesystems (e.g., external drives). |
+| `/media` | Auto-mount point for removable media (USB drives, CDs, SD cards). |
+| `/data` | Custom mount point, often used for persistent or shared data (e.g., Windows volume in WSL). |
 
 - Any user that you create the home directory it starts with `/home/Ubuntu` ` /home/harsh`
 - For root is `/root`
